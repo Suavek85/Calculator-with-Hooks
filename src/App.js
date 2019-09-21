@@ -4,10 +4,10 @@ import Counter from "./components/Counter";
 import "./App.css";
 
 function App() {
-  const [firstNo, setFirstNo] = useState("");
+  const [firstNo, setFirstNo] = useState(0);
+  const [secondNo, setSecondNo] = useState("");
   const [calcArr, setCalcArr] = useState([]);
   const [showOperator, setShowOperator] = useState(false);
-  const [secondNo, setSecondNo] = useState("");
 
   useEffect(() => {
     if (calcArr.length === 2) {
@@ -22,16 +22,32 @@ function App() {
       setShowOperator(false);
       setSecondNo("");
       setCalcArr([]);
-      console.log(calcArr);
     }
   }, [calcArr]);
 
-  function settingFirstNumber(e) {
-    if (!calcArr.length) {
-      setFirstNo(firstNo + e.currentTarget.dataset.foo);
-    } else {
-      setSecondNo(secondNo + e.currentTarget.dataset.foo);
+  function settingNumber(e, setNo, getNo) {
+    const selectedNo = e.currentTarget.dataset.foo;
+    //prevent two zeros from being displayed
+    if (getNo === 0 && parseFloat(selectedNo) === 0) {
+      setNo(getNo);
     }
+    //prevent two decimal separators from being displayed
+    else if (
+      parseFloat(Math.round(getNo)) !== parseFloat(getNo) &&
+      selectedNo === "."
+    ) {
+      setNo(getNo);
+    }
+    //default
+    else {
+      setNo(getNo + selectedNo);
+    }
+  }
+
+  function handleSettingNumbers(e) {
+    !calcArr.length
+      ? settingNumber(e, setFirstNo, firstNo)
+      : settingNumber(e, setSecondNo, secondNo);
   }
 
   function addToCalcArray() {
@@ -54,11 +70,11 @@ function App() {
         <div className="wrapper">
           {[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "decimal"].map(el => {
             return el === "decimal" ? (
-              <button onClick={settingFirstNumber} data-foo=".">
+              <button onClick={handleSettingNumbers} data-foo=".">
                 .
               </button>
             ) : (
-              <button onClick={settingFirstNumber} key={el} data-foo={el}>
+              <button onClick={handleSettingNumbers} key={el} data-foo={el}>
                 {el}
               </button>
             );
