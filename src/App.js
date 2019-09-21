@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
+import helpers from './Helper';
 
 import "./App.css";
 
@@ -25,29 +26,11 @@ function App() {
     }
   }, [calcArr]);
 
-  function settingNumber(e, setNo, getNo) {
-    const selectedNo = e.currentTarget.dataset.foo;
-    //prevent two zeros from being displayed
-    if (getNo === 0 && parseFloat(selectedNo) === 0) {
-      setNo(getNo);
-    }
-    //prevent two decimal separators from being displayed
-    else if (
-      parseFloat(Math.round(getNo)) !== parseFloat(getNo) &&
-      selectedNo === "."
-    ) {
-      setNo(getNo);
-    }
-    //default
-    else {
-      setNo(getNo + selectedNo);
-    }
-  }
 
   function handleSettingNumbers(e) {
     !calcArr.length
-      ? settingNumber(e, setFirstNo, firstNo)
-      : settingNumber(e, setSecondNo, secondNo);
+      ? helpers.settingNumber(e, setFirstNo, firstNo)
+      : helpers.settingNumber(e, setSecondNo, secondNo);
   }
 
   function addToCalcArray() {
