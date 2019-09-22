@@ -46,11 +46,13 @@ function App() {
   }
 
   function handleSettingOperation(e) {
-    const selectedOperation = e.currentTarget.dataset.foo;
-    const selectedSymbol = e.currentTarget.dataset.symbol;
-    setCalcArr([...calcArr, firstNo]);
-    setIsOperator(true);
-    setOperation({ name: selectedOperation, symbol: selectedSymbol });
+    if(!isOperator) {
+      const selectedOperation = e.currentTarget.dataset.foo;
+      const selectedSymbol = e.currentTarget.dataset.symbol;
+      setCalcArr([...calcArr, firstNo]);
+      setIsOperator(true);
+      setOperation({ name: selectedOperation, symbol: selectedSymbol });
+    }
   }
 
   function handleCalculatingValues() {
@@ -83,6 +85,7 @@ function App() {
   );
 }
 
-//TODO:  afer one calc, proptypes etc, improve css
+//CHANGE ALL THAT it can support multi operations
+//TODO: proptypes etc, improve css, do not allow operation on 3rd integer
 
 export default App;
