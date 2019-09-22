@@ -57,6 +57,14 @@ function App() {
     setCalcArr([...calcArr, secondNo]);
   }
 
+  function handleClearingCounter() {
+    setFirstNo(0);
+    setSecondNo("");
+    setCalcArr([]);
+    setIsOperator(false);
+    setOperation({ name: "", symbol: "" });
+  }
+
   return (
     <div className="App">
       <Counter
@@ -69,9 +77,12 @@ function App() {
         handleSettingOperation={handleSettingOperation}
         handleCalculatingValues={handleCalculatingValues}
         handleSettingNumbers={handleSettingNumbers}
+        handleClearingCounter={handleClearingCounter}
       />
     </div>
   );
 }
+
+//TODO:  afer one calc, proptypes etc, improve css
 
 export default App;

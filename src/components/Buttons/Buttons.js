@@ -10,6 +10,7 @@ function Buttons(props) {
       <Operators
         handleSettingOperation={props.handleSettingOperation}
         handleCalculatingValues={props.handleCalculatingValues}
+        handleClearingCounter={props.handleClearingCounter}
       />
     </div>
   );

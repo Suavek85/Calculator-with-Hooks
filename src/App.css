@@ -40,6 +40,9 @@
   margin: 5px;
   cursor: pointer;
 }
+.wrapper-operator > button:last-child {
+  background-color: red;
+}
 
 .counter-wrapper {
   display: flex;
@@ -50,6 +53,11 @@
   margin: 20px auto 20px;
   height: 70px;
   background-color: lightgray;
+}
+
+h2 {
+  text-align: right;
+  width: inherit;
 }
 
 h2 > span:nth-child(2) {

@@ -19,6 +19,13 @@ const helpers = {
     ) {
       setNo(getNo);
     }
+     //remove initial zero when setting number
+     else if (
+      getNo === 0 &&
+      selectedNo !== "."
+    ) {
+      setNo(selectedNo);
+    }
     //default
     else {
       setNo(getNo + selectedNo);
