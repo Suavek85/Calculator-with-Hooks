@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import helpers from './Helper';
-
 import "./App.css";
 
 function App() {
   const [firstNo, setFirstNo] = useState(0);
   const [secondNo, setSecondNo] = useState("");
   const [calcArr, setCalcArr] = useState([]);
-  const [showOperator, setShowOperator] = useState(false);
+  const [isOperator, setIsOperator] = useState(false);
+  const [operation, setOperation] = useState('');
 
   useEffect(() => {
     if (calcArr.length === 2) {
-      let calcNoArray = calcArr.map(el => {
-        return parseFloat(el);
-      });
-      setFirstNo(
-        calcNoArray.reduce((prev, next) => {
-          return prev + next;
-        })
-      );
-      setShowOperator(false);
+      let calcNoArray = helpers.stringToNumbers(calcArr);
+      switch(operation) {
+        case 'adding':
+          setFirstNo(
+            helpers.adding(calcNoArray)
+          );
+          break;
+        default:
+          setFirstNo(
+            helpers.adding(calcNoArray)
+          );
+      }
+      setIsOperator(false);
       setSecondNo("");
       setCalcArr([]);
     }
-  }, [calcArr]);
+  }, [calcArr, operation]);
 
 
   function handleSettingNumbers(e) {
@@ -35,11 +39,12 @@ function App() {
 
   function addToCalcArray() {
     setCalcArr([...calcArr, firstNo]);
-    setShowOperator(true);
+    setIsOperator(true);
   }
 
   function addTwoValues() {
     setCalcArr([...calcArr, secondNo]);
+    setOperation('adding')
   }
 
   return (
@@ -47,7 +52,7 @@ function App() {
       <Counter
         firstNo={firstNo}
         secondNo={secondNo}
-        showOperator={showOperator}
+        isOperator={isOperator}
       />
       <div className="wrapper-main">
         <div className="wrapper">

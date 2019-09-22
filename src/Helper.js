@@ -12,10 +12,27 @@ const helpers = {
     ) {
       setNo(getNo);
     }
+    //prevent two decimal separators from being displayed
+    else if (
+      getNo[getNo.length - 1] === "." &&
+      selectedNo === "."
+    ) {
+      setNo(getNo);
+    }
     //default
     else {
       setNo(getNo + selectedNo);
     }
+  },
+  adding: function(calcNoArray) {
+    return calcNoArray.reduce((prev, next) => {
+      return prev + next;
+    })
+  },
+  stringToNumbers: function(calcArr) {
+    return calcArr.map(el => {
+      return parseFloat(el);
+    });
   }
 };
 

@@ -6,7 +6,7 @@ function Counter(props) {
     <div className="counter-wrapper">
       <h2>
         <span>{props.firstNo}</span>
-        {props.showOperator ? <span>+</span> : null}
+        {props.isOperator ? <span>+</span> : null}
         <span>{props.secondNo}</span>
       </h2>
     </div>
