@@ -5,8 +5,8 @@ function Operators(props) {
   const operationButtons = [
     { kind: "adding", symbol: "+" },
     { kind: "deducting", symbol: "-" },
-    { kind: "multiplying", symbol: "*" },
-    { kind: "dividing", symbol: "/" }
+    { kind: "multiplying", symbol: "×" },
+    { kind: "dividing", symbol: "÷" }
   ];
   return (
     <div className="wrapper-operator">
@@ -22,7 +22,7 @@ function Operators(props) {
         );
       })}
       <button onClick={props.handleCalculatingValues}>=</button>
-      <button onClick={props.handleClearingCounter}>C</button>
+      <button onClick={props.handleClearingCounter}>c</button>
     </div>
   );
 }
