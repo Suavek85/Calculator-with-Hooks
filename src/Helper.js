@@ -29,6 +29,11 @@ const helpers = {
       return prev + next;
     })
   },
+  deducting: function(calcNoArray) {
+    return calcNoArray.reduce((prev, next) => {
+      return prev - next;
+    })
+  },
   stringToNumbers: function(calcArr) {
     return calcArr.map(el => {
       return parseFloat(el);

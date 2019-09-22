@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
-import helpers from './Helper';
+import helpers from "./Helper";
 import "./App.css";
 
 function App() {
@@ -8,21 +8,20 @@ function App() {
   const [secondNo, setSecondNo] = useState("");
   const [calcArr, setCalcArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
-  const [operation, setOperation] = useState('');
+  const [operation, setOperation] = useState({name: '', symbol: ''});
 
   useEffect(() => {
     if (calcArr.length === 2) {
       let calcNoArray = helpers.stringToNumbers(calcArr);
-      switch(operation) {
-        case 'adding':
-          setFirstNo(
-            helpers.adding(calcNoArray)
-          );
+      switch (operation.name) {
+        case "adding":
+          setFirstNo(helpers.adding(calcNoArray));
+          break;
+        case "deducting":
+          setFirstNo(helpers.deducting(calcNoArray));
           break;
         default:
-          setFirstNo(
-            helpers.adding(calcNoArray)
-          );
+          setFirstNo(helpers.adding(calcNoArray));
       }
       setIsOperator(false);
       setSecondNo("");
@@ -30,30 +29,27 @@ function App() {
     }
   }, [calcArr, operation]);
 
-
   function handleSettingNumbers(e) {
     !calcArr.length
       ? helpers.settingNumber(e, setFirstNo, firstNo)
       : helpers.settingNumber(e, setSecondNo, secondNo);
   }
 
-  function addToCalcArray() {
+  function handleSettingOperation(e) {
+    const selectedOperation = e.currentTarget.dataset.foo;
+    const selectedSymbol = e.currentTarget.dataset.symbol;
     setCalcArr([...calcArr, firstNo]);
     setIsOperator(true);
+    setOperation({name: selectedOperation, symbol: selectedSymbol});
   }
 
-  function addTwoValues() {
+  function calculateTwoValues() {
     setCalcArr([...calcArr, secondNo]);
-    setOperation('adding')
   }
 
   return (
     <div className="App">
-      <Counter
-        firstNo={firstNo}
-        secondNo={secondNo}
-        isOperator={isOperator}
-      />
+      <Counter firstNo={firstNo} secondNo={secondNo} isOperator={isOperator} operation={operation} />
       <div className="wrapper-main">
         <div className="wrapper">
           {[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "decimal"].map(el => {
@@ -69,8 +65,13 @@ function App() {
           })}
         </div>
         <div className="wrapper-operator">
-          <button onClick={addToCalcArray}>+</button>
-          <button onClick={addTwoValues}>=</button>
+          <button data-foo="adding" data-symbol="+" onClick={handleSettingOperation}>
+            +
+          </button>
+          <button data-foo="deducting" data-symbol="-" onClick={handleSettingOperation}>
+            -
+          </button>
+          <button onClick={calculateTwoValues}>=</button>
         </div>
       </div>
     </div>
