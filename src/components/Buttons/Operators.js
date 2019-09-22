@@ -10,6 +10,12 @@ function Operators(props) {
     <button data-foo="deducting" data-symbol="-" onClick={props.handleSettingOperation}>
       -
     </button>
+    <button data-foo="multiplying" data-symbol="*" onClick={props.handleSettingOperation}>
+      *
+    </button>
+    <button data-foo="dividing" data-symbol="/" onClick={props.handleSettingOperation}>
+      /
+    </button>
     <button onClick={props.handleCalculatingValues}>=</button>
   </div>
   );

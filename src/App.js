@@ -5,6 +5,7 @@ import Buttons from "./components/Buttons/Buttons";
 import "./App.css";
 
 function App() {
+  //hooks
   const [firstNo, setFirstNo] = useState(0);
   const [secondNo, setSecondNo] = useState("");
   const [calcArr, setCalcArr] = useState([]);
@@ -21,6 +22,12 @@ function App() {
         case "deducting":
           setFirstNo(helpers.deducting(calcNoArray));
           break;
+        case "multiplying":
+          setFirstNo(helpers.multiplying(calcNoArray));
+          break;
+        case "dividing":
+          setFirstNo(helpers.dividing(calcNoArray));
+          break;
         default:
           setFirstNo(helpers.adding(calcNoArray));
       }
@@ -29,6 +36,8 @@ function App() {
       setCalcArr([]);
     }
   }, [calcArr, operation]);
+
+  //functions
 
   function handleSettingNumbers(e) {
     !calcArr.length

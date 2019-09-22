@@ -34,6 +34,16 @@ const helpers = {
       return prev - next;
     })
   },
+  multiplying: function(calcNoArray) {
+    return calcNoArray.reduce((prev, next) => {
+      return prev * next;
+    })
+  },
+  dividing: function(calcNoArray) {
+    return calcNoArray.reduce((prev, next) => {
+      return prev / next;
+    })
+  },
   stringToNumbers: function(calcArr) {
     return calcArr.map(el => {
       return parseFloat(el);
