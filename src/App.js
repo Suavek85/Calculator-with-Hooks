@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import helpers from "./Helper";
+import Buttons from "./components/Buttons/Buttons";
 import "./App.css";
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
   const [secondNo, setSecondNo] = useState("");
   const [calcArr, setCalcArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
-  const [operation, setOperation] = useState({name: '', symbol: ''});
+  const [operation, setOperation] = useState({ name: "", symbol: "" });
 
   useEffect(() => {
     if (calcArr.length === 2) {
@@ -40,40 +41,26 @@ function App() {
     const selectedSymbol = e.currentTarget.dataset.symbol;
     setCalcArr([...calcArr, firstNo]);
     setIsOperator(true);
-    setOperation({name: selectedOperation, symbol: selectedSymbol});
+    setOperation({ name: selectedOperation, symbol: selectedSymbol });
   }
 
-  function calculateTwoValues() {
+  function handleCalculatingValues() {
     setCalcArr([...calcArr, secondNo]);
   }
 
   return (
     <div className="App">
-      <Counter firstNo={firstNo} secondNo={secondNo} isOperator={isOperator} operation={operation} />
-      <div className="wrapper-main">
-        <div className="wrapper">
-          {[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "decimal"].map(el => {
-            return el === "decimal" ? (
-              <button onClick={handleSettingNumbers} data-foo=".">
-                .
-              </button>
-            ) : (
-              <button onClick={handleSettingNumbers} key={el} data-foo={el}>
-                {el}
-              </button>
-            );
-          })}
-        </div>
-        <div className="wrapper-operator">
-          <button data-foo="adding" data-symbol="+" onClick={handleSettingOperation}>
-            +
-          </button>
-          <button data-foo="deducting" data-symbol="-" onClick={handleSettingOperation}>
-            -
-          </button>
-          <button onClick={calculateTwoValues}>=</button>
-        </div>
-      </div>
+      <Counter
+        firstNo={firstNo}
+        secondNo={secondNo}
+        isOperator={isOperator}
+        operation={operation}
+      />
+      <Buttons
+        handleSettingOperation={handleSettingOperation}
+        handleCalculatingValues={handleCalculatingValues}
+        handleSettingNumbers={handleSettingNumbers}
+      />
     </div>
   );
 }
