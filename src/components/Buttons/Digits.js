@@ -6,11 +6,11 @@ function Digits(props) {
     <div className="wrapper">
     {[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "decimal"].map(el => {
       return el === "decimal" ? (
-        <button onClick={props.handleSettingNumbers} key='10' data-foo=".">
+        <button onClick={props.handleSettingInput} key='10' data-foo=".">
           .
         </button>
       ) : (
-        <button onClick={props.handleSettingNumbers} key={el} data-foo={el}>
+        <button onClick={props.handleSettingInput} key={el} data-foo={el}>
           {el}
         </button>
       );

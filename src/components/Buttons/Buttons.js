@@ -6,10 +6,10 @@ import "../../App.css";
 function Buttons(props) {
   return (
     <div className="wrapper-main">
-      <Digits handleSettingNumbers={props.handleSettingNumbers} />
+      <Digits handleSettingInput={props.handleSettingInput} />
       <Operators
         handleSettingOperation={props.handleSettingOperation}
-        handleCalculatingValues={props.handleCalculatingValues}
+        handleSettingOutput={props.handleSettingOutput}
         handleClearingCounter={props.handleClearingCounter}
       />
     </div>

@@ -16,7 +16,7 @@
 
 ## General info
 
-Simple Calculator built with React Hooks
+Simple Calculator built with React Hooks. Only allows calculations on two numbers at once.
 
 My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch. ![🔨](https://mail.google.com/mail/e/1f528)
 

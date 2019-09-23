@@ -6,68 +6,78 @@ import "./App.css";
 
 function App() {
   //hooks
-  const [firstNo, setFirstNo] = useState(0);
-  const [secondNo, setSecondNo] = useState("");
-  const [calcArr, setCalcArr] = useState([]);
+  const [firstInput, setFirstInput] = useState(0);
+  const [secondInput, setSecondInput] = useState("");
+  const [inputArr, setInputArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
   const [operation, setOperation] = useState({ name: "", symbol: "" });
 
+  //useEffect for displaying calculation result
+
   useEffect(() => {
-    if (calcArr.length === 2) {
-      let calcNoArray = helpers.stringToNumbers(calcArr);
+    if (inputArr.length === 2) {
+      let inputNumbersArray = helpers.stringToNumbers(inputArr);
       switch (operation.name) {
         case "adding":
-          setFirstNo(helpers.adding(calcNoArray));
+          setFirstInput(helpers.adding(inputNumbersArray));
           break;
         case "deducting":
-          setFirstNo(helpers.deducting(calcNoArray));
+          setFirstInput(helpers.deducting(inputNumbersArray));
           break;
         case "multiplying":
-          setFirstNo(helpers.multiplying(calcNoArray));
+          setFirstInput(helpers.multiplying(inputNumbersArray));
           break;
         case "dividing":
-          setFirstNo(helpers.dividing(calcNoArray));
+          setFirstInput(helpers.dividing(inputNumbersArray));
           break;
         default:
-          setFirstNo(helpers.adding(calcNoArray));
+          setFirstInput(helpers.adding(inputNumbersArray));
       }
       setIsOperator(false);
-      setSecondNo("");
-      setCalcArr([]);
+      setSecondInput("");
+      setInputArr([]);
     }
-  }, [calcArr, operation]);
+  }, [inputArr, operation]);
 
-  //functions
+  //setting first and second input values
 
-  function handleSettingNumbers(e) {
-    !calcArr.length
-      ? helpers.settingNumber(e, setFirstNo, firstNo)
-      : helpers.settingNumber(e, setSecondNo, secondNo);
+  function handleSettingInput(e) {
+    !inputArr.length
+      ? helpers.settingInput(e, setFirstInput, firstInput)
+      : helpers.settingInput(e, setSecondInput, secondInput);
   }
+
+  //setting operation/operator type
 
   function handleSettingOperation(e) {
     if (!isOperator) {
       const selectedOperation = e.currentTarget.dataset.foo;
       const selectedSymbol = e.currentTarget.dataset.symbol;
-      if (!isFinite(firstNo)) {
-        setFirstNo(0);
-        setCalcArr([0]);
+      if (!isFinite(firstInput)) {
+        setFirstInput(0);
+        setInputArr([0]);
       } else {
-        setCalcArr([...calcArr, firstNo]);
+        setInputArr([...inputArr, firstInput]);
       }
       setIsOperator(true);
       setOperation({ name: selectedOperation, symbol: selectedSymbol });
     }
   }
 
-  function handleCalculatingValues() {
-    setCalcArr([...calcArr, secondNo]);
+  //setting output/calculating input values
+
+  function handleSettingOutput() {
+    if(secondInput) {
+      setInputArr([...inputArr, secondInput]);
+    } else {
+      return
+    }
   }
 
   function handleClearingCounter() {
-    setFirstNo(0);
-    setSecondNo("");
-    setCalcArr([]);
+    setFirstInput(0);
+    setSecondInput("");
+    setInputArr([]);
     setIsOperator(false);
     setOperation({ name: "", symbol: "" });
   }
@@ -75,22 +85,22 @@ function App() {
   return (
     <div className="App">
       <Counter
-        firstNo={firstNo}
-        secondNo={secondNo}
+        firstInput={firstInput}
+        secondInput={secondInput}
         isOperator={isOperator}
         operation={operation}
       />
       <Buttons
+        handleSettingInput={handleSettingInput}
         handleSettingOperation={handleSettingOperation}
-        handleCalculatingValues={handleCalculatingValues}
-        handleSettingNumbers={handleSettingNumbers}
+        handleSettingOutput={handleSettingOutput}
         handleClearingCounter={handleClearingCounter}
       />
     </div>
   );
 }
 
-//TODO: round up, proptypes etc, remove
+//TODO: proptypes etc, remove fn
 //change all to support multi operations
 
 export default App;
