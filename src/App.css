@@ -45,14 +45,14 @@
   height: calc(300px * 0.7 * 0.25);
   font-size: 22px;
   padding: 10px;
-  background-color: orange;
+  background-color: lightblue;
   margin: 5px;
   cursor: pointer;
   border: 0.5px solid black;
 }
 
 .wrapper-operator>button:last-child {
-  background-color: red;
+  background-color: orange;
 }
 
 button:focus {
@@ -62,6 +62,7 @@ button:focus {
 .counter-wrapper {
   display: flex;
   width: 80%;
+  overflow: hidden;
   border-radius: 5px;
   font-family: monospace;
   align-items: center;

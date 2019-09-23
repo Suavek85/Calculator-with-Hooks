@@ -13,17 +13,11 @@ const helpers = {
       setNo(getNo);
     }
     //prevent two decimal separators from being displayed
-    else if (
-      getNo[getNo.length - 1] === "." &&
-      selectedNo === "."
-    ) {
+    else if (getNo[getNo.length - 1] === "." && selectedNo === ".") {
       setNo(getNo);
     }
-     //remove initial zero when setting number
-     else if (
-      getNo === 0 &&
-      selectedNo !== "."
-    ) {
+    //remove initial zero when setting number
+    else if (getNo === 0 && selectedNo !== ".") {
       setNo(selectedNo);
     }
     //default
@@ -33,23 +27,28 @@ const helpers = {
   },
   adding: function(calcNoArray) {
     return calcNoArray.reduce((prev, next) => {
-      return prev + next;
-    })
+      return (prev + next).toFixed(2);
+    });
   },
   deducting: function(calcNoArray) {
     return calcNoArray.reduce((prev, next) => {
-      return prev - next;
-    })
+      return (prev - next).toFixed(2);
+    });
   },
   multiplying: function(calcNoArray) {
     return calcNoArray.reduce((prev, next) => {
-      return prev * next;
-    })
+      return (prev * next).toFixed(2);
+    });
   },
   dividing: function(calcNoArray) {
-    return calcNoArray.reduce((prev, next) => {
+    const equationResult = calcNoArray.reduce((prev, next) => {
       return prev / next;
-    })
+    });
+    if (isNaN(equationResult)) {
+      return 'Error';
+    } else {
+      return equationResult.toFixed(2);
+    }
   },
   stringToNumbers: function(calcArr) {
     return calcArr.map(el => {

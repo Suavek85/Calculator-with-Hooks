@@ -46,10 +46,15 @@ function App() {
   }
 
   function handleSettingOperation(e) {
-    if(!isOperator) {
+    if (!isOperator) {
       const selectedOperation = e.currentTarget.dataset.foo;
       const selectedSymbol = e.currentTarget.dataset.symbol;
-      setCalcArr([...calcArr, firstNo]);
+      if (!isFinite(firstNo)) {
+        setFirstNo(0);
+        setCalcArr([0]);
+      } else {
+        setCalcArr([...calcArr, firstNo]);
+      }
       setIsOperator(true);
       setOperation({ name: selectedOperation, symbol: selectedSymbol });
     }
@@ -85,7 +90,7 @@ function App() {
   );
 }
 
-//CHANGE ALL THAT it can support multi operations
-//TODO: proptypes etc, improve css, do not allow operation on 3rd integer
+//TODO: round up, proptypes etc, remove
+//change all to support multi operations
 
 export default App;
