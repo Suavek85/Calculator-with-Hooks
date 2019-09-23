@@ -18,16 +18,16 @@ function App() {
     if (inputArr.length === 2) {
       let inputNumbersArray = helpers.stringToNumbers(inputArr);
       switch (operation.name) {
-        case "adding":
+        case "addition":
           setFirstInput(helpers.adding(inputNumbersArray));
           break;
-        case "deducting":
+        case "subtraction":
           setFirstInput(helpers.deducting(inputNumbersArray));
           break;
-        case "multiplying":
+        case "multiplication":
           setFirstInput(helpers.multiplying(inputNumbersArray));
           break;
-        case "dividing":
+        case "division":
           setFirstInput(helpers.dividing(inputNumbersArray));
           break;
         default:
@@ -51,7 +51,7 @@ function App() {
 
   function handleSettingOperation(e) {
     if (!isOperator) {
-      const selectedOperation = e.currentTarget.dataset.foo;
+      const selectedOperation = e.currentTarget.dataset.name;
       const selectedSymbol = e.currentTarget.dataset.symbol;
       if (!isFinite(firstInput)) {
         setFirstInput(0);
