@@ -9,7 +9,7 @@ function Buttons(props) {
       <Digits handleSettingInput={props.handleSettingInput} />
       <Operators
         handleSettingOperation={props.handleSettingOperation}
-        handleSettingOutput={props.handleSettingOutput}
+        handleAddingSecondInput={props.handleAddingSecondInput}
         handleClearingCounter={props.handleClearingCounter}
       />
     </div>

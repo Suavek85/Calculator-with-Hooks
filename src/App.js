@@ -12,27 +12,12 @@ function App() {
   const [isOperator, setIsOperator] = useState(false);
   const [operation, setOperation] = useState({ name: "", symbol: "" });
 
-  //useEffect for displaying calculation result
+  //useEffect for displaying output / calculation result
 
   useEffect(() => {
     if (inputArr.length === 2) {
-      let inputNumbersArray = helpers.stringToNumbers(inputArr);
-      switch (operation.name) {
-        case "addition":
-          setFirstInput(helpers.adding(inputNumbersArray));
-          break;
-        case "subtraction":
-          setFirstInput(helpers.deducting(inputNumbersArray));
-          break;
-        case "multiplication":
-          setFirstInput(helpers.multiplying(inputNumbersArray));
-          break;
-        case "division":
-          setFirstInput(helpers.dividing(inputNumbersArray));
-          break;
-        default:
-          setFirstInput(helpers.adding(inputNumbersArray));
-      }
+      const inputNumbersArray = helpers.stringToNumbers(inputArr);
+      handleSettingOutput(operation, inputNumbersArray);
       setIsOperator(false);
       setSecondInput("");
       setInputArr([]);
@@ -47,7 +32,7 @@ function App() {
       : helpers.settingInput(e, setSecondInput, secondInput);
   }
 
-  //setting operation/operator type
+  //setting operation/operator type and adding firstInput
 
   function handleSettingOperation(e) {
     if (!isOperator) {
@@ -64,9 +49,9 @@ function App() {
     }
   }
 
-  //setting output/calculating input values
+  //adding secondInput 
 
-  function handleSettingOutput() {
+  function handleAddingSecondInput() {
     if(secondInput) {
       setInputArr([...inputArr, secondInput]);
     } else {
@@ -74,6 +59,28 @@ function App() {
     }
   }
 
+  // setting output
+
+  function handleSettingOutput(operation, inputNumbersArray) {
+    switch (operation.name) {
+      case "addition":
+        setFirstInput(helpers.adding(inputNumbersArray));
+        break;
+      case "subtraction":
+        setFirstInput(helpers.deducting(inputNumbersArray));
+        break;
+      case "multiplication":
+        setFirstInput(helpers.multiplying(inputNumbersArray));
+        break;
+      case "division":
+        setFirstInput(helpers.dividing(inputNumbersArray));
+        break;
+      default:
+        setFirstInput(helpers.adding(inputNumbersArray));
+    }
+  }
+  
+ // clearing counter
   function handleClearingCounter() {
     setFirstInput(0);
     setSecondInput("");
@@ -93,14 +100,14 @@ function App() {
       <Buttons
         handleSettingInput={handleSettingInput}
         handleSettingOperation={handleSettingOperation}
-        handleSettingOutput={handleSettingOutput}
+        handleAddingSecondInput={handleAddingSecondInput}
         handleClearingCounter={handleClearingCounter}
       />
     </div>
   );
 }
 
-//TODO: proptypes etc, remove fn
+//TODO:  remove fn
 //change all to support multi operations
 
 export default App;

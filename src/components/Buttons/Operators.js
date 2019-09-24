@@ -21,7 +21,7 @@ function Operators(props) {
           </button>
         );
       })}
-      <button onClick={props.handleSettingOutput}>=</button>
+      <button onClick={props.handleAddingSecondInput}>=</button>
       <button onClick={props.handleClearingCounter}>c</button>
     </div>
   );
