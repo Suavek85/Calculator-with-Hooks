@@ -1,7 +1,7 @@
 import React from "react";
 import Digits from "./Digits";
 import Operators from "./Operators";
-import "../../App.css";
+import "../../App.scss";
 
 function Buttons(props) {
   return (

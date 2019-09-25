@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import helpers from "./Helper";
 import Buttons from "./components/Buttons/Buttons";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   //hooks
