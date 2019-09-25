@@ -1,6 +1,8 @@
 //MIXINS, VARS
 
 $calc-width: 200px;
+$background-color: #3d4549;
+$text-color: lightblue;
 
 @mixin button-size {
   width: calc(200px * 0.6 * 0.25);
@@ -26,7 +28,7 @@ $calc-width: 200px;
   text-align: center;
   width: $calc-width;
   box-sizing: border-box;
-  background: #3d4549;
+  background: $background-color;
   border-radius: 6px;
 }
 
@@ -56,17 +58,17 @@ $calc-width: 200px;
 
 .wrapper>button:hover {
   border-color: #aaa;
-  box-shadow: 0px 2px 6px lightblue;
+  box-shadow: 0px 2px 6px $text-color;
 }
 
 .wrapper>button:active {
   transform: translateY(.5px);
-  box-shadow:  0px 1px 4px lightblue;
+  box-shadow:  0px 1px 4px $text-color;
 }
 
 .wrapper-operator>button {
   @include button-size();
-  @include button-style(22px, 3px, lightblue);
+  @include button-style(22px, 3px, $text-color);
   margin: 5px;
   cursor: pointer;
   border: 0.5px solid black;
