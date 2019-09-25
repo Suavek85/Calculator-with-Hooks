@@ -32,12 +32,18 @@
   font-family: monospace;
   justify-items: flex-start;
   border: 0.5px solid #bbb;
+  transition: box-shadow 0.2s ease-in-out;
 
 }
 
 .wrapper>button:hover {
   border-color: #aaa;
-  box-shadow: 0px 1px 6px 0px lightblue;
+  box-shadow: 0px 2px 6px lightblue;
+}
+
+.wrapper>button:active {
+  transform: translateY(.5px);
+  box-shadow:  0px 1px 4px lightblue;
 }
 
 .wrapper-operator>button {
