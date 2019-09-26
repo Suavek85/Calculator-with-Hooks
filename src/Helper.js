@@ -1,29 +1,29 @@
 const helpers = {
   //ALLOW CORRECT NUMBER FORMAT
-  settingInput: function(e, setNo, getNo) {
-    const selectedNo = e.currentTarget.dataset.foo;
+  settingInput: function(e, setInput, currentInput) {
+    const newInputValue = e.currentTarget.dataset.foo;
     //prevent two zeros from being displayed
-    if (getNo === 0 && parseFloat(selectedNo) === 0) {
-      setNo(getNo);
+    if (currentInput === 0 && parseFloat(newInputValue) === 0) {
+      setInput(currentInput);
     }
-    //prevent two decimal separators from being displayed
+    //prevent two decimal separators from being displayed when current input is a floating number
     else if (
-      parseFloat(Math.round(getNo)) !== parseFloat(getNo) &&
-      selectedNo === "."
+      parseFloat(Math.round(currentInput)) !== parseFloat(currentInput) &&
+      newInputValue === "."
     ) {
-      setNo(getNo);
+      setInput(currentInput);
     }
-    //prevent two decimal separators from being displayed
-    else if (getNo[getNo.length - 1] === "." && selectedNo === ".") {
-      setNo(getNo);
+    //prevent two decimal separators from being displayed when the last value is already a dec separator
+    else if (currentInput[currentInput.length - 1] === "." && newInputValue === ".") {
+      setInput(currentInput);
     }
-    //remove initial zero when setting number
-    else if (getNo === 0 && selectedNo !== ".") {
-      setNo(selectedNo);
+    //remove initial zero when new value is a number
+    else if (currentInput === 0 && newInputValue !== ".") {
+      setInput(newInputValue);
     }
     //default
     else {
-      setNo(getNo + selectedNo);
+      setInput(currentInput + newInputValue);
     }
   },
   
