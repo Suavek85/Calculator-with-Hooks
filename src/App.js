@@ -36,8 +36,10 @@ function App() {
 
   function handleSettingOperation(e) {
     if (!isOperator) {
-      const selectedOperation = e.currentTarget.dataset.name;
-      const selectedSymbol = e.currentTarget.dataset.symbol;
+      const selectedOperation = e.target.getAttribute('data-name');
+      const selectedSymbol = e.target.getAttribute('data-symbol');
+      //const selectedOperation = e.currentTarget.dataset.name;
+      //const selectedSymbol = e.currentTarget.dataset.symbol;
       if (!isFinite(firstInput)) {
         setFirstInput(0);
         setInputArr([0]);
