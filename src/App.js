@@ -12,7 +12,7 @@ function App() {
   const [inputArr, setInputArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
   const [operation, setOperation] = useState({ name: "", symbol: "" });
-  const fade = useSpring({from: { opacity: 0 }, opacity: 1});
+  const fadeIn = useSpring({from: { opacity: 0, marginTop: 0 }, to: { opacity: 1, marginTop: 40 }});
 
   //useEffect for displaying output / calculation result
 
@@ -94,7 +94,7 @@ function App() {
   }
 
   return (
-    <animated.div className="App" style={fade}>
+    <animated.div className="App" style={fadeIn}>
       <Counter
         firstInput={firstInput}
         secondInput={secondInput}

@@ -64,7 +64,7 @@ $button-total-margin: 10px;
 
 .wrapper>button {
   @include button-size;
-  @include button-style(18px, 3px, #313131, #bbb);
+  @include button-style(18px, 3px, #313131, lightyellow);
   color: lightblue;
   margin: $button-total-margin / 2;
   font-family: monospace;
@@ -84,7 +84,7 @@ $button-total-margin: 10px;
 
 .wrapper-operator>button {
   @include button-size;
-  @include button-style(22px, 3px, $text-color, black);
+  @include button-style(18px, 3px, $text-color, black);
   margin: $button-total-margin / 2;
 }
 
