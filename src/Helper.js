@@ -28,45 +28,45 @@ const helpers = {
   },
   
   //ADDING
-  adding: function(inputNumbersArray) {
-   const resultAdding = this.addingHelper(inputNumbersArray);
+  addition: function(inputNumbersArray) {
+   const resultAdding = this.additionHelper(inputNumbersArray);
    return this.roundingResult(resultAdding);
   },
-  addingHelper: function(inputNumbersArray) {
+  additionHelper: function(inputNumbersArray) {
     return inputNumbersArray.reduce((prev, next) => {
       return prev + next;
     });
   },
   //DEDUCTING
-  deducting: function(inputNumbersArray) {
-    const resultDeducting = this.deductingHelper(inputNumbersArray);
+  subtraction: function(inputNumbersArray) {
+    const resultDeducting = this.subtractionHelper(inputNumbersArray);
     return this.roundingResult(resultDeducting);
   },
-  deductingHelper: function(inputNumbersArray) {
+  subtractionHelper: function(inputNumbersArray) {
     return inputNumbersArray.reduce((prev, next) => {
       return prev - next;
     });
   },
   //MULTIPLYING
-  multiplying: function(inputNumbersArray) {
-    const resultMultiplying = this.multiplyingHelper(inputNumbersArray);
+  multiplication: function(inputNumbersArray) {
+    const resultMultiplying = this.multiplicationHelper(inputNumbersArray);
     return this.roundingResult(resultMultiplying);
   },
-  multiplyingHelper: function(inputNumbersArray) {
+  multiplicationHelper: function(inputNumbersArray) {
     return inputNumbersArray.reduce((prev, next) => {
       return prev * next;
     });
   },
   //DIVIDING
-  dividing: function(inputNumbersArray) {
-    const resultDividing = this.dividingHelper(inputNumbersArray);
+  division: function(inputNumbersArray) {
+    const resultDividing = this.divisionHelper(inputNumbersArray);
     if (isNaN(resultDividing)) {
       return 'Error';
     } else {
       return this.roundingResult(resultDividing);
     }
   },
-  dividingHelper: function(inputNumbersArray) {
+  divisionHelper: function(inputNumbersArray) {
     return inputNumbersArray.reduce((prev, next) => {
       return prev / next;
     });

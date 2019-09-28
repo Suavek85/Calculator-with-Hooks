@@ -3,7 +3,7 @@ import "../App.scss";
 
 function Counter(props) {
   return (
-    <div className="counter-wrapper">
+    <div className="wrapper-counter">
       <h2>
         <span>{props.firstInput}</span>
         {props.isOperator ? <span>{props.operation.symbol}</span> : null}

@@ -12,11 +12,7 @@ function App() {
   const [inputArr, setInputArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
   const [operation, setOperation] = useState({ name: "", symbol: "" });
-
-  const fade = useSpring({
-    from: { opacity: 0 },
-    opacity: 1,
-  });
+  const fade = useSpring({from: { opacity: 0 }, opacity: 1});
 
   //useEffect for displaying output / calculation result
 
@@ -44,7 +40,7 @@ function App() {
     if (!isOperator) {
       const selectedOperation = e.target.getAttribute("data-name");
       const selectedSymbol = e.target.getAttribute("data-symbol");
-      //slower React alternative - e.currentTarget.dataset.name;
+      //slower alt- e.currentTarget.dataset.name;
 
       if (!isFinite(firstInput)) {
         setFirstInput(0);
@@ -72,19 +68,19 @@ function App() {
   function handleSettingOutput(operation, inputNumbersArray) {
     switch (operation.name) {
       case "addition":
-        setFirstInput(helpers.adding(inputNumbersArray));
+        setFirstInput(helpers.addition(inputNumbersArray));
         break;
       case "subtraction":
-        setFirstInput(helpers.deducting(inputNumbersArray));
+        setFirstInput(helpers.subtraction(inputNumbersArray));
         break;
       case "multiplication":
-        setFirstInput(helpers.multiplying(inputNumbersArray));
+        setFirstInput(helpers.multiplication(inputNumbersArray));
         break;
       case "division":
-        setFirstInput(helpers.dividing(inputNumbersArray));
+        setFirstInput(helpers.division(inputNumbersArray));
         break;
       default:
-        setFirstInput(helpers.adding(inputNumbersArray));
+        setFirstInput(helpers.addition(inputNumbersArray));
     }
   }
 
