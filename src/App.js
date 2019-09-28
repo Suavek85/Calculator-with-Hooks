@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "react-spring";
 import Counter from "./components/Counter";
 import helpers from "./Helper";
 import Buttons from "./components/Buttons/Buttons";
@@ -11,6 +12,11 @@ function App() {
   const [inputArr, setInputArr] = useState([]);
   const [isOperator, setIsOperator] = useState(false);
   const [operation, setOperation] = useState({ name: "", symbol: "" });
+
+  const fade = useSpring({
+    from: { opacity: 0 },
+    opacity: 1,
+  });
 
   //useEffect for displaying output / calculation result
 
@@ -36,10 +42,10 @@ function App() {
 
   function handleSettingOperation(e) {
     if (!isOperator) {
-      const selectedOperation = e.target.getAttribute('data-name');
-      const selectedSymbol = e.target.getAttribute('data-symbol');
-      //const selectedOperation = e.currentTarget.dataset.name;
-      //const selectedSymbol = e.currentTarget.dataset.symbol;
+      const selectedOperation = e.target.getAttribute("data-name");
+      const selectedSymbol = e.target.getAttribute("data-symbol");
+      //slower React alternative - e.currentTarget.dataset.name;
+
       if (!isFinite(firstInput)) {
         setFirstInput(0);
         setInputArr([0]);
@@ -51,13 +57,13 @@ function App() {
     }
   }
 
-  //adding secondInput 
+  //adding secondInput
 
   function handleAddingSecondInput() {
-    if(secondInput) {
+    if (secondInput) {
       setInputArr([...inputArr, secondInput]);
     } else {
-      return
+      return;
     }
   }
 
@@ -81,8 +87,8 @@ function App() {
         setFirstInput(helpers.adding(inputNumbersArray));
     }
   }
-  
- // clearing counter
+
+  // clearing counter
   function handleClearingCounter() {
     setFirstInput(0);
     setSecondInput("");
@@ -92,7 +98,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <animated.div className="App" style={fade}>
       <Counter
         firstInput={firstInput}
         secondInput={secondInput}
@@ -105,7 +111,7 @@ function App() {
         handleAddingSecondInput={handleAddingSecondInput}
         handleClearingCounter={handleClearingCounter}
       />
-    </div>
+    </animated.div>
   );
 }
 
