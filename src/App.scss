@@ -9,7 +9,9 @@ $button-total-margin: 10px;
 // MIXINS
 
 @mixin button-size {
-  flex-basis:calc(#{$calc-width} * .65 / #{$number-of-buttons} - #{$button-total-margin});
+  flex-basis: calc(
+    #{$calc-width} * 0.65 / #{$number-of-buttons} - #{$button-total-margin + 2px}
+  );
 }
 
 @mixin button-style($font, $pad, $back, $border-col) {
@@ -49,7 +51,7 @@ $button-total-margin: 10px;
   margin-bottom: 10px;
 }
 
-.wrapper-counter{
+.wrapper-counter {
   @include flexbox();
   width: 80%;
   overflow: hidden;
@@ -62,7 +64,7 @@ $button-total-margin: 10px;
   background-color: lightgray;
 }
 
-.wrapper>button {
+.wrapper > button {
   @include button-size;
   @include button-style(18px, 3px, #313131, lightyellow);
   color: lightblue;
@@ -72,23 +74,23 @@ $button-total-margin: 10px;
   transition: box-shadow 0.2s ease-in-out;
 }
 
-.wrapper>button:hover {
+.wrapper > button:hover {
   border-color: #aaa;
   box-shadow: 0px 2px 6px $text-color;
 }
 
-.wrapper>button:active {
-  transform: translateY(.5px);
-  box-shadow:  0px 1px 4px $text-color;
+.wrapper > button:active {
+  transform: translateY(0.5px);
+  box-shadow: 0px 1px 4px $text-color;
 }
 
-.wrapper-operator>button {
+.wrapper-operator > button {
   @include button-size;
   @include button-style(18px, 3px, $text-color, black);
   margin: $button-total-margin / 2;
 }
 
-.wrapper-operator>button:last-child {
+.wrapper-operator > button:last-child {
   background-color: orange;
 }
 
@@ -102,7 +104,46 @@ h2 {
   font-size: 22px;
 }
 
-h2>span:nth-child(2) {
+h2 > span:nth-child(2) {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.btn-order[data-order="1"] {
+  order: 1;
+}
+.btn-order[data-order="2"] {
+  order: 2;
+}
+
+.btn-order[data-order="3"] {
+  order: 3;
+}
+.btn-order[data-order="4"] {
+  order: 4;
+}
+.btn-order[data-order="5"] {
+  order: 5;
+}
+.btn-order[data-order="6"] {
+  order: 6;
+}
+
+.btn-order[data-order="7"] {
+  order: 7;
+}
+.btn-order[data-order="8"] {
+  order: 8;
+}
+
+.btn-order[data-order="9"] {
+  order: 9;
+}
+
+.btn-order[data-order="10"] {
+  order: 10;
+}
+
+.btn-order[data-order="11"] {
+  order: 11;
 }
