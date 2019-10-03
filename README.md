@@ -1,6 +1,6 @@
 # Calculator with Hooks
 
-> Simple Calculator built with React Hooks
+> Simple Calculator built with [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 
 ## Table of Contents
 
