@@ -1,15 +1,21 @@
+// @flow
+
 import React from "react";
 import "../../App.scss";
+import { ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION } from "../../constants";
+import type { OperationButtonType, OperatorsPropsType } from "../../types";
 
-function Operators(props) {
-  const operationButtons = [
-    { type: "addition", symbol: "+" },
-    { type: "subtraction", symbol: "-" },
-    { type: "multiplication", symbol: "×" },
-    { type: "division", symbol: "÷" }
+function Operators(props: OperatorsPropsType) {
+
+  const operationButtons: Array<OperationButtonType> = [
+    { type: ADDITION, symbol: "+" },
+    { type: SUBTRACTION, symbol: "-" },
+    { type: MULTIPLICATION, symbol: "×" },
+    { type: DIVISION, symbol: "÷" }
   ];
+
   return (
-    <div className="wrapper-operator">
+    <div className="wrapper--operator">
       {operationButtons.map(el => {
         return (
           <button

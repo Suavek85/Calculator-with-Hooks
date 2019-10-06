@@ -1,0 +1,8 @@
+@import './App.scss'
+
+:export {
+    wrapper: $wrapper;
+    wrapperNumbers: $wrapper--numbers;
+    wrapperOperator: $wrapper--operator;
+    wrapperCounter: $wrapper--counter;
+}

@@ -32,7 +32,7 @@ My own idea ![🤓](https://mail.google.com/mail/e/1f913), created from scratch.
 
 ## Acknowledgements
 
--  React
+-  React, React Spring, Flow
 
 ## Issues
 

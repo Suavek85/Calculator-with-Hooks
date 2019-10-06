@@ -3,23 +3,25 @@ import { Trail } from "react-spring/renderprops";
 import "../../App.scss";
 
 function Digits(props) {
+  const items = [
+    { name: 9, order: 1 },
+    { name: 6, order: 4 },
+    { name: 3, order: 7 },
+    { name: 0, order: 10 },
+    { name: 8, order: 2 },
+    { name: 5, order: 5 },
+    { name: 2, order: 8 },
+    { name: "decimal", order: 11 },
+    { name: 7, order: 3 },
+    { name: 4, order: 6 },
+    { name: 1, order: 9 },
+  ]
+  
   return (
-    <div className="wrapper">
+    <div className="wrapper--numbers">
       <Trail
         //items={[9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "decimal"]}
-        items={[
-          { name: 9, order: 1 },
-          { name: 6, order: 4 },
-          { name: 3, order: 7 },
-          { name: 0, order: 10 },
-          { name: 8, order: 2 },
-          { name: 5, order: 5 },
-          { name: 2, order: 8 },
-          { name: "decimal", order: 11 },
-          { name: 7, order: 3 },
-          { name: 4, order: 6 },
-          { name: 1, order: 9 },
-        ]}
+        items={items}
         keys={el => el}
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}

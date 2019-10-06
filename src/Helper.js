@@ -1,3 +1,5 @@
+
+
 const helpers = {
   //ALLOW CORRECT NUMBER FORMAT
   settingInput: function(e, setInput, currentInput) {

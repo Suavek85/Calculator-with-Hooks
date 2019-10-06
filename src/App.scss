@@ -27,6 +27,18 @@ $button-total-margin: 10px;
   flex-direction: $direction;
 }
 
+//CLASSNAMES
+
+@function bem-modifier($block-name, $state-name ) {
+ @return #{$block-name}--#{$state-name}
+}
+
+$wrapper: wrapper;
+$wrapper--numbers: bem-modifier($wrapper, numbers);
+$wrapper--operator: bem-modifier($wrapper, operator);
+$wrapper--counter: bem-modifier($wrapper, counter);
+
+
 //STYLES
 
 .App {
@@ -40,110 +52,126 @@ $button-total-margin: 10px;
   text-align: center;
 }
 
-.wrapper,
-.wrapper-operator {
-  @include flexbox();
-  width: 65%;
-  margin: auto;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 10px;
+.#{$wrapper} {
+  &--numbers,
+  &--operator {
+    @include flexbox();
+    width: 65%;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &--counter {
+    @include flexbox();
+    width: 80%;
+    overflow: hidden;
+    border-radius: 5px;
+    font-family: monospace;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    height: 50px;
+    background-color: lightgray;
+  }
 }
 
-.wrapper-counter {
-  @include flexbox();
-  width: 80%;
-  overflow: hidden;
-  border-radius: 5px;
-  font-family: monospace;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  height: 50px;
-  background-color: lightgray;
-}
 
-.wrapper > button {
-  @include button-size;
-  @include button-style(18px, 3px, #313131, lightyellow);
-  color: lightblue;
-  margin: $button-total-margin / 2;
-  font-family: monospace;
-  justify-items: flex-start;
-  transition: box-shadow 0.2s ease-in-out;
-}
-
-.wrapper > button:hover {
-  border-color: #aaa;
-  box-shadow: 0px 2px 6px $text-color;
-}
-
-.wrapper > button:active {
-  transform: translateY(0.5px);
-  box-shadow: 0px 1px 4px $text-color;
-}
-
-.wrapper-operator > button {
-  @include button-size;
-  @include button-style(18px, 3px, $text-color, black);
-  margin: $button-total-margin / 2;
-}
-
-.wrapper-operator > button:last-child {
-  background-color: orange;
-}
+//BUTTONS
 
 button:focus {
   outline: 0;
 }
 
+.#{$wrapper--numbers} {
+  > button {
+    @include button-size;
+    @include button-style(18px, 3px, #313131, lightyellow);
+    color: lightblue;
+    margin: $button-total-margin / 2;
+    font-family: monospace;
+    justify-items: flex-start;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  > button:hover {
+    border-color: #aaa;
+    box-shadow: 0px 2px 6px $text-color;
+  }
+
+  > button:active {
+    transform: translateY(0.5px);
+    box-shadow: 0px 1px 4px $text-color;
+  }
+}
+
+.#{$wrapper--operator} {
+  > button {
+    @include button-size;
+    @include button-style(18px, 3px, $text-color, black);
+    margin: $button-total-margin / 2;
+  }
+
+  > button:last-child {
+    background-color: orange;
+  }
+}
+
+.btn-order {
+  &[data-order="1"] {
+    order: 1;
+  }
+  &[data-order="2"] {
+    order: 2;
+  }
+  
+  &[data-order="3"] {
+    order: 3;
+  }
+  &[data-order="4"] {
+    order: 4;
+  }
+  &[data-order="5"] {
+    order: 5;
+  }
+  &[data-order="6"] {
+    order: 6;
+  }
+  
+  &[data-order="7"] {
+    order: 7;
+  }
+  &[data-order="8"] {
+    order: 8;
+  }
+  
+  &[data-order="9"] {
+    order: 9;
+  }
+  
+  &[data-order="10"] {
+    order: 10;
+  }
+  
+  &[data-order="11"] {
+    order: 11;
+  }
+}
+
+
+//OTHER
+
 h2 {
   text-align: right;
   width: inherit;
   font-size: 22px;
+
+  > span:nth-child(2) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
-h2 > span:nth-child(2) {
-  padding-left: 5px;
-  padding-right: 5px;
-}
 
-.btn-order[data-order="1"] {
-  order: 1;
-}
-.btn-order[data-order="2"] {
-  order: 2;
-}
-
-.btn-order[data-order="3"] {
-  order: 3;
-}
-.btn-order[data-order="4"] {
-  order: 4;
-}
-.btn-order[data-order="5"] {
-  order: 5;
-}
-.btn-order[data-order="6"] {
-  order: 6;
-}
-
-.btn-order[data-order="7"] {
-  order: 7;
-}
-.btn-order[data-order="8"] {
-  order: 8;
-}
-
-.btn-order[data-order="9"] {
-  order: 9;
-}
-
-.btn-order[data-order="10"] {
-  order: 10;
-}
-
-.btn-order[data-order="11"] {
-  order: 11;
-}
